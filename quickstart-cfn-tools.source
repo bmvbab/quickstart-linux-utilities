@@ -171,7 +171,7 @@ function  qs_bootstrap_pip() {
     echo "[INFO] Check for python/pip"
     qs_get-python-path PYTHON_EXECUTEABLE
     if  [ $? -eq 0 ] ;then
-        command -v pip3.4 > /dev/null 2&>1
+        command -v pip3 > /dev/null 2&>1
         if [ $? -eq 1 ]; then
             curl --silent \
              --show-error \
@@ -306,8 +306,8 @@ function qs_aws-cfn-bootstrap() {
         pip install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
     elif [ "$INSTANCE_OSTYPE" == "sles" ]; then
         zypper -n refresh && zypper -n update
-        zypper -n install python3.4-pip
-        pip3.4 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
+        zypper -n install python3-pip
+        pip3 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz
         echo "[WARNING] not implemeneted"
     else
         exit 1
